@@ -1,0 +1,334 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "sales-services",
+    "version": "1.0",
+    "contact": {
+      "name": "sara Taha",
+      "email": "tahsa067@student.otago.ac.nz"
+    },
+    "description": "A service for managing sales for customers."
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8081/api"
+    }
+  ],
+  "paths": {
+    "/sales": {
+      "get": {
+        "summary": "Get the sales",
+        "tags": [
+          "SaleResources"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Sale"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-sales",
+        "description": "Get the entire sales collection for the sale resources."
+      },
+      "post": {
+        "summary": "Add a sale",
+        "operationId": "add-sale",
+        "responses": {
+          "201": {
+            "description": "Item successfully added to the saleItem."
+          },
+          "422": {
+            "description": "sale<b> NOT added </b> - sale id need to be unique."
+          }
+        },
+        "description": "Add a new sale to the sale resources.",
+        "tags": [
+          "SaleResources"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Sale"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sales/{id}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "id",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get specific sale",
+        "tags": [
+          "SaleResources"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Sale"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/Not-Found"
+          }
+        },
+        "operationId": "get-sale",
+        "description": "Get a specific sale from the sale resources."
+      },
+      "delete": {
+        "summary": "Delete a sale",
+        "operationId": "delete-sale",
+        "responses": {
+          "204": {
+            "description": "Sale successfully deleted."
+          },
+          "404": {
+            "$ref": "#/components/responses/Not-Found"
+          }
+        },
+        "description": "delete a specific sale from the sale resources.",
+        "tags": [
+          "SaleResources"
+        ]
+      }
+    },
+    "/sales/customer/{id}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "id",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get sales for specific customer",
+        "tags": [
+          "SalesCustomerResourcs"
+        ],
+        "responses": {
+          "200": {
+            "description": "get the entire list sales for specfic customer",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Sale"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/Not-Found"
+          }
+        },
+        "operationId": "get-sales-customer-id",
+        "description": "get all sales for specific customer."
+      }
+    },
+    "/sales/customer/{id}/summary": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "id",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get sale data for specific customer",
+        "tags": [
+          "SalesCustomerResourcs"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Summary"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/Not-Found"
+          }
+        },
+        "operationId": "get-salesdata-customer-id-summary",
+        "description": "sale summary for specific customer "
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Sale": {
+        "title": "Sale",
+        "type": "object",
+        "description": "",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "the sale id  should be uniqu"
+          },
+          "saleDate": {
+            "type": "string",
+            "description": "the date of the sale"
+          },
+          "customer": {
+            "$ref": "#/components/schemas/Customer"
+          },
+          "saleitem": {
+            "type": "array",
+            "description": "contain list of saleitems",
+            "items": {
+              "$ref": "#/components/schemas/SaleItem"
+            }
+          },
+          "total": {
+            "$ref": "#/components/schemas/Totals"
+          }
+        },
+        "required": [
+          "id",
+          "customer",
+          "saleitem",
+          "total"
+        ]
+      },
+      "SaleItem": {
+        "title": "SaleItem",
+        "type": "object",
+        "description": "",
+        "properties": {
+          "productId": {
+            "type": "string",
+            "description": "the id of the product"
+          },
+          "quantity": {
+            "type": "number",
+            "description": "quantity of the product"
+          },
+          "price": {
+            "type": "number",
+            "description": "price of the product"
+          }
+        }
+      },
+      "Customer": {
+        "title": "Customer",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "id of a customer"
+          },
+          "firstName": {
+            "type": "string",
+            "description": "first name of the customer"
+          },
+          "lastName": {
+            "type": "string",
+            "description": "last name of the customer"
+          },
+          "customerCode": {
+            "type": "string",
+            "description": "customerCode for the customer"
+          },
+          "email": {
+            "type": "string",
+            "description": "email of the customer"
+          },
+          "group": {
+            "type": "string",
+            "description": "group for the customer"
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "Summary": {
+        "title": "Summary",
+        "type": "object",
+        "properties": {
+          "numberOfSales": {
+            "type": "integer",
+            "description": "number of sales"
+          },
+          "totalPayment": {
+            "type": "number",
+            "description": "total payment"
+          },
+          "group": {
+            "type": "string",
+            "description": "group summary for sale"
+          }
+        },
+        "required": [
+          "numberOfSales",
+          "totalPayment",
+          "group"
+        ]
+      },
+      "Totals": {
+        "title": "Totals",
+        "type": "object",
+        "properties": {
+          "totalPrice": {
+            "type": "number",
+            "description": "total price "
+          },
+          "totalTax": {
+            "type": "number",
+            "description": "total tax "
+          },
+          "totalPayment": {
+            "type": "number",
+            "description": "total payment"
+          }
+        }
+      }
+    },
+    "responses": {
+      "Not-Found": {
+        "description": "Not Found - Sale is not found"
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "SaleResources"
+    },
+    {
+      "name": "SalesCustomerResourcs"
+    }
+  ]
+}
