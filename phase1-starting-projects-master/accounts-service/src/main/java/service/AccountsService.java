@@ -7,15 +7,16 @@ import io.jooby.graphql.GraphQLModule;
 import io.jooby.graphql.GraphiQLModule;
 import io.jooby.json.GsonModule;
 import java.io.IOException;
+import dao.AccountserviceDAO;
 
 public class AccountsService extends Jooby {
 
 	public AccountsService() {
-
+                AccountserviceDAO accountservicedao = new AccountserviceDAO();
 		setServerOptions(new ServerOptions().setPort(8082));
-
+                // added accountservicedao inside the accountwiring method
 		install(new GsonModule());
-		install(new GraphQLModule(new AccountWiring().getWiring()));
+		install(new GraphQLModule(new AccountWiring(accountservicedao).getWiring()));
 		install(new GraphiQLModule());
 
 		get("/", (ctx) -> ctx.sendRedirect("/graphql"));
