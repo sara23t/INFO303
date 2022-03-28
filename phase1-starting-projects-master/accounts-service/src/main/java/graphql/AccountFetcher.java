@@ -5,6 +5,7 @@ import dao.AccountserviceDAO;
 import domain.Customer;
 import graphql.schema.DataFetcher;
 import graphql.schema.DataFetchingEnvironment;
+import static io.jooby.Reified.map;
 import java.math.BigDecimal;
 import java.util.Map;
 
@@ -33,13 +34,22 @@ public class AccountFetcher {
     };
 }
 
-    
+    public DataFetcher getChangeGroupFetcher() {
+        return (DataFetchingEnvironment dfe) -> {
+             String id = dfe.getArgument("id");
+            String group = dfe.getArgument("group");
+         ObjectMapper mapper = new ObjectMapper();
+        Customer groups = mapper.convertValue(group, Customer.class);
+            return dao.changeGroup(id, groups);
+       };
+    }
 
-   // public DataFetcher getCustomerFetcher() {
-    //    return (DataFetchingEnvironment dfe) -> {
-    //        return dao.getCustomer();
-      //  };
-   // }
+
+    public DataFetcher getCustomerFetcher() {
+        return (DataFetchingEnvironment dfe) -> {
+           return dao.getCustomer();
+       };
+    }
 //
     public DataFetcher getDeleteCustomerFetcher() {
         return (DataFetchingEnvironment dfe) -> {

@@ -13,8 +13,8 @@ public class AccountsService extends Jooby {
 
 	public AccountsService() {
                 AccountserviceDAO accountservicedao = new AccountserviceDAO();
-		setServerOptions(new ServerOptions().setPort(8082));
-                // added accountservicedao inside the accountwiring method
+		
+                setServerOptions(new ServerOptions().setPort(8082));
 		install(new GsonModule());
 		install(new GraphQLModule(new AccountWiring(accountservicedao).getWiring()));
 		install(new GraphiQLModule());

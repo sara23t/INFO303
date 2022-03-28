@@ -18,14 +18,14 @@ public class AccountWiring {
 			.newRuntimeWiring()
                 .type(
                         newTypeWiring("SaleQuery")
-                               // .dataFetcher("Customers", new AccountFetcher(dao).getCustomerFetcher())
+                                .dataFetcher("Customers", new AccountFetcher(dao).getCustomerFetcher())
                                 .dataFetcher("customer", new AccountFetcher(dao).getCustomerByIdFetcher())
                                 
                 ).type(
                         newTypeWiring("SalesMutation")
                                 .dataFetcher("deleteCustomer", new AccountFetcher(dao).getDeleteCustomerFetcher())
                                 .dataFetcher("createCustomer", new AccountFetcher(dao).getCreateCustomerFetcher())
-                              //  .dataFetcher("changeGroup", new AccountFetcher(dao).getUPdateGroupFetcher())
+                                .dataFetcher("changeGroup", new AccountFetcher(dao).getChangeGroupFetcher())
 
                         
                 ).build();

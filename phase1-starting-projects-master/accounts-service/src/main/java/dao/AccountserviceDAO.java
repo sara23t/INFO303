@@ -14,8 +14,8 @@ import java.util.stream.Collectors;
 
 public class AccountserviceDAO {
 
-	//private static final Map<String, Customer> itemsById = new TreeMap<>();
-	private static final Map<String, Customer> itemsById = new HashMap<>();
+	private static final Map<String, Customer> itemsById = new TreeMap<>();
+	//private static final Map<String, Customer> itemsById = new HashMap<>();
 
 	public AccountserviceDAO() {
 		/*
@@ -40,9 +40,9 @@ public class AccountserviceDAO {
 
 	//get all customers account//
 	
-        //public Collection<Customer> getCustomer() {
-		//return itemsById.value();
-	//}
+       public Collection<Customer> getCustomer() {
+		return new ArrayList<>(itemsById.values());
+	}
 
 
 
@@ -50,6 +50,9 @@ public class AccountserviceDAO {
 		return itemsById.remove(id);
 	}
 
+        public Customer changeGroup(String id, Customer group) {
+		return itemsById.put(id, group);
+	}
 	/**
 	 * Checks if a Customer exists.*/
 	 
