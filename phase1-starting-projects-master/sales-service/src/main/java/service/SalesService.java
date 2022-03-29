@@ -1,19 +1,26 @@
 package service;
 
+import dao.SalesDAO;
 import java.io.IOException;
 import io.jooby.Jooby;
 import io.jooby.OpenAPIModule;
 import io.jooby.ServerOptions;
 import io.jooby.json.GsonModule;
+import resourc.SaleCustomerResource;
+import resourc.SalesResource;
 
 public class SalesService extends Jooby {
 
 	public SalesService() {
 
+                SalesDAO saledao = new SalesDAO();
 		setServerOptions(new ServerOptions().setPort(8081));
 
 		install(new GsonModule());
-		install(new OpenAPIModule());
+		
+                mount(new SaleCustomerResource(saledao));
+		mount(new SalesResource(saledao));
+                install(new OpenAPIModule());
 
 		assets("/openapi.json", "sales.json");
 		assets("/openapi.yaml", "sales.yaml");

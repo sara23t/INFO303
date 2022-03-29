@@ -15,7 +15,6 @@ import java.util.stream.Collectors;
 public class AccountserviceDAO {
 
 	private static final Map<String, Customer> itemsById = new TreeMap<>();
-	//private static final Map<String, Customer> itemsById = new HashMap<>();
 
 	public AccountserviceDAO() {
 		/*

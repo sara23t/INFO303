@@ -2,7 +2,7 @@ plugins {
 	id 'application'
 }
 
-mainClassName = "service.Server"
+mainClassName = "service.AccountsService"
 
 repositories {
 	mavenCentral()

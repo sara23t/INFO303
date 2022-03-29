@@ -5,24 +5,24 @@ public class Customer implements Comparable<Customer> {
     private String id;
     private String email;
     private String username;
-    private String firstname;
-    private String lastname;
+    private String firstName;
+    private String lastName;
     private String group;
 
     public Customer() {
     }
 
-    public Customer(String email, String username, String firstname, String lastname, String group, String id) {
+    public Customer(String id, String email, String username, String firstName, String lastName, String group) {
         this.id = id;
         this.email = email;
         this.username = username;
-        this.firstname = firstname;
-        this.lastname = lastname;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.group = group;
     }
 
     public String getFirstname() {
-        return firstname;
+        return firstName;
     }
 
     public String getUsername() {
@@ -49,12 +49,12 @@ public class Customer implements Comparable<Customer> {
         this.id = id;
     }
 
-    public void setfirstname(String firstname) {
-        this.firstname = firstname;
+    public void setfirstname(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastname() {
-        return lastname;
+        return lastName;
     }
 
     public void setgroup(String group) {
@@ -65,13 +65,13 @@ public class Customer implements Comparable<Customer> {
         return group;
     }
 
-    public void setlastname(String lastname) {
-        this.lastname = lastname;
+    public void setlastname(String lastName) {
+        this.lastName = lastName;
     }
 
     @Override
     public String toString() {
-        return "Customer{" + "email=" + email + ", username=" + username + ", firstname=" + firstname + ", lastname=" + lastname + ", group=" + group + ", id=" + id + '}';
+        return "Customer{" + "email=" + email + ", username=" + username + ", firstname=" + firstName + ", lastname=" + lastName + ", group=" + group + ", id=" + id + '}';
     }
 
     @Override

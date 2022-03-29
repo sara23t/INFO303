@@ -133,18 +133,18 @@ components:
           description: the date of the sale
         customer:
           $ref: '#/components/schemas/Customer'
-        saleitem:
+        Items:
           type: array
           description: contain list of saleitems
           items:
             $ref: '#/components/schemas/SaleItem'
-        total:
+        totals:
           $ref: '#/components/schemas/Totals'
       required:
         - id
         - customer
-        - saleitem
-        - total
+        - Items
+        - totals
     SaleItem:
       title: SaleItem
       type: object

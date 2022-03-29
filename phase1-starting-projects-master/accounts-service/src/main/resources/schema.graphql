@@ -12,8 +12,8 @@ type Customer {
 	id: String!
         email: String!
 	username: String!
-        firstName: String!
-        lastName: String!
+        firstname: String!
+        lastname: String!
         group: String!
 }
 """
@@ -23,8 +23,8 @@ input NewCustomer {
 	id: String!
         email: String!
 	username: String!
-        firstName: String!
-        lastName: String!
+        firstname: String!
+        lastname: String!
         group: String!
 }
 """
