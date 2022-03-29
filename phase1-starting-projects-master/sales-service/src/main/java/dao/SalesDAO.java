@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.TreeMap;
 
 public class SalesDAO {
 
@@ -24,7 +23,7 @@ public class SalesDAO {
 
     //addtosale by customer 
     public void addSale(Sale sale) {
-        saleById.put(sale.getid(), sale);
+        saleById.put(sale.getId(), sale);
         saleByCustomerID.put(sale.getCustomer().getId(), sale);
 
     }
@@ -39,7 +38,7 @@ public class SalesDAO {
 
    //delete by customerid
     public void delete(String id) {
-        saleById.remove(saleById.get(id)).getid();
+        saleById.remove(saleById.get(id)).getId();
         saleByCustomerID.remove(saleById.get(id).getCustomer().getId(), saleById.get(id));
     }
 

@@ -10,63 +10,57 @@ import java.util.ArrayList;
 public class Sale {
 
     private String id;
-    private String saledate;
+    private String saleDate;
 
     private Customer customer;
     private Collection<SaleItem> items;
     private Totals totals;
 
-    public Sale(String id, String saledate, Customer customer, Collection<SaleItem> items, Totals total) {
-        this.id = id;
-        this.saledate = saledate;
-        this.customer = customer;
-        this.totals = total;
-        this.items = items;
+    public Sale(){}
+    @Override
+    public String toString() {
+        return "Sale{" + "id=" + id + ", saleDate=" + saleDate + ", customer=" + customer + ", items=" + items + ", totals=" + totals + '}';
     }
 
-    public String getid() {
+    public String getId() {
         return id;
     }
 
-    public String getDate() {
-        return saledate;
-    }
-
-    public Customer getCustomer() {
-        return this.customer;
-    }
-
-    public Collection<SaleItem> getsaleitem() {
-        return items;
-    }
-  public void setsaleitem(Collection<SaleItem> items) {
-        this.items = items;
-    }
-    public Totals getTotals() {
-        return totals;
-    }
-
-    public void setid(String id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public void setSaleDate(String saledate) {
-        this.saledate = saledate;
+    public String getSaleDate() {
+        return saleDate;
+    }
+
+    public void setSaleDate(String saleDate) {
+        this.saleDate = saleDate;
+    }
+
+    public Customer getCustomer() {
+        return customer;
     }
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
 
-  
-
-    public void setTotals(Totals total) {
-        this.totals = total;
+    public Collection<SaleItem> getItems() {
+        return items;
     }
 
-    @Override
-    public String toString() {
-        return  id  + saledate + customer  + items + totals;
+    public void setItems(Collection<SaleItem> items) {
+        this.items = items;
+    }
 
+    public Totals getTotals() {
+        return totals;
+    }
+
+    public void setTotals(Totals totals) {
+        this.totals = totals;
     }
 }
+
+    

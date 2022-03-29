@@ -39,7 +39,7 @@ public class SalesResource extends Jooby {
             post("", ctx -> {
                 Sale sale = ctx.body(Sale.class);
 
-                if (dao.exists(sale.getid())) {
+                if (dao.exists(sale.getId())) {
 
                     // store the product
                     return ctx
@@ -50,7 +50,7 @@ public class SalesResource extends Jooby {
                     // send the URI of the new item via the "location" header of the response
                     dao.addSale(sale);
                     return ctx
-                            .setResponseHeader("location", ctx.getRequestURL() + "/product/" + sale.getid())
+                            .setResponseHeader("location", ctx.getRequestURL() + "/product/" + sale.getId())
                             .send(StatusCode.CREATED);
 
                 }

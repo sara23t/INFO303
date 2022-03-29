@@ -5,42 +5,38 @@ package domain;
  * @author SaraTaha
  */
 public class SaleItem {
-    private String productid;
+    private String productId;
     private double quantity;
     private double price;
-    
-    
-    public SaleItem(String productid, double quantity, double price){
-        this.productid = productid;
-        this.quantity = quantity;
-        this.price = price;
+
+    @Override
+    public String toString() {
+        return "SaleItem{" + "productId=" + productId + ", quantity=" + quantity + ", price=" + price + '}';
     }
 
-    public String getId() {
-        return productid;
+    public String getProductId() {
+        return productId;
     }
 
-    public double getquantity() {
+    public void setProductId(String productId) {
+        this.productId = productId;
+    }
+
+    public double getQuantity() {
         return quantity;
     }
 
-    public double getprice() {
-        return price;
-    }
-
-    public void setid(String productid) {
-        this.productid = productid;
-    }
-
-    public void setquantity(double quantity) {
+    public void setQuantity(double quantity) {
         this.quantity = quantity;
     }
 
-    public void setprice(double price) {
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
         this.price = price;
     }
-    
-    public String toString(){
-        return price + quantity + productid;
-    }
+
+
 }

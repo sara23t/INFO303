@@ -1,79 +1,63 @@
 package domain;
 
-public class Customer implements Comparable<Customer>{
+public class Customer{
     private String id;
-    private String firstname;
-    private String lastname;
+    private String firstName;
+    private String lastName;
     private String group;
     private String email;
     private String customerCode;
-    
-    public Customer(String id, String firstname, String lastname, String email, String customerCode){
-        this.id = id;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.email = email;
-        this.customerCode = customerCode;
-        
-    }
 
-    public Customer() {
-    }
-
-    public String getcustomerCode(){
-        return customerCode;
-        
-    }
-    public void setcustomerCode(String customerCode){
-        this.customerCode=customerCode;
-    }
     public String getId() {
         return id;
     }
 
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public String getGroup() {
-        return group;
-    }
-
-    public String getEmail() {
-        return email;
+    @Override
+    public String toString() {
+        return "Customer{" + "id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", group=" + group + ", email=" + email + ", customerCode=" + customerCode + '}';
     }
 
     public void setId(String id) {
         this.id = id;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getGroup() {
+        return group;
     }
 
     public void setGroup(String group) {
         this.group = group;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
     public void setEmail(String email) {
         this.email = email;
     }
-    
-    @Override
-    public String toString(){
-        	return  "id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", group=" + group + ", email=" + email;
+
+    public String getCustomerCode() {
+        return customerCode;
     }
 
-    @Override
-    public int compareTo(Customer ids) {
-        return this.id.compareTo(ids.getId());
+    public void setCustomerCode(String customerCode) {
+        this.customerCode = customerCode;
     }
 }

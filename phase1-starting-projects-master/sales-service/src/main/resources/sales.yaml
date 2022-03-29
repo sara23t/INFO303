@@ -133,7 +133,7 @@ components:
           description: the date of the sale
         customer:
           $ref: '#/components/schemas/Customer'
-        Items:
+        items:
           type: array
           description: contain list of saleitems
           items:
