@@ -37,9 +37,9 @@ public class AccountFetcher {
     public DataFetcher getChangeGroupFetcher() {
         return (DataFetchingEnvironment dfe) -> {
              String id = dfe.getArgument("id");
-            String group = dfe.getArgument("group");
-         ObjectMapper mapper = new ObjectMapper();
-        Customer groups = mapper.convertValue(group, Customer.class);
+            Customer groups = dfe.getArgument("groups");
+         //ObjectMapper mapper = new ObjectMapper();
+        //Customer groups = mapper.convertValue(group, Customer.class);
             return dao.changeGroup(id, groups);
        };
     }
