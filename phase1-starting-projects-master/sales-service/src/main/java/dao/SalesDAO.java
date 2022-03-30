@@ -17,7 +17,7 @@ public class SalesDAO {
 
     public SalesDAO() {
         if (saleById.isEmpty()) {
-            
+
         }
     }
 
@@ -36,10 +36,13 @@ public class SalesDAO {
         return saleById.get(id);
     }
 
-   //delete by customerid
+    //delete by customerid
     public void delete(String id) {
-        saleById.remove(saleById.get(id)).getId();
-        saleByCustomerID.remove(saleById.get(id).getCustomer().getId(), saleById.get(id));
+        Sale sale;
+        sale = saleById.get(id);
+        sale = saleById.remove(sale.getId());
+        saleByCustomerID.remove(sale.getCustomer().getId(), sale);
+
     }
 
     public boolean exists(String id) {
@@ -51,32 +54,32 @@ public class SalesDAO {
     }
 
     public Collection<Sale> getSalesByCustomerid(String id) {
-            return saleByCustomerID.get(id);
+        return saleByCustomerID.get(id);
     }
-    
-    public Summary getSummaryByCustomerId(String customerId){
+
+    public Summary getSummaryByCustomerId(String customerId) {
         Summary summary = new Summary();
-        
+
         Collection<Sale> salebycustomer = getSalesByCustomerid(customerId);
-      //number of sales is the lenght of the sale for customer
+        //number of sales is the lenght of the sale for customer
         // total payment is the sum all of the collection
-          summary.setnumberOfSales(salebycustomer.size());
-         double x = 0;
-          for(Sale s: salebycustomer){
-            
-             x += s.getTotals().getTotalPayment();
-            
-          }
-          summary.settotalPayment(x);
-        if(summary.gettotalPayment() > 5000){
-             summary.setGroup("VIP Customers");
+        summary.setnumberOfSales(salebycustomer.size());
+        double x = 0;
+        for (Sale s : salebycustomer) {
+
+            x += s.getTotals().getTotalPayment();
+
+        }
+        summary.settotalPayment(x);
+        if (summary.gettotalPayment() > 5000) {
+            summary.setGroup("VIP Customers");
 
         } else {
-           summary.setGroup("Regular Customers");
+            summary.setGroup("Regular Customers");
         }
-              
+
         return summary;
-        
+
     }
 
 }
