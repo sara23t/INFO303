@@ -1,0 +1,70 @@
+# Add GraphQL schema definition here
+schema {
+	query: SaleQuery
+
+	mutation: SalesMutation
+}
+
+"""
+An existing customer in the system.
+"""
+type Customer {
+	id: String!
+        email: String!
+	username: String!
+        firstname: String!
+        lastname: String!
+        group: String!
+}
+"""
+add new customer to the system
+"""
+input NewCustomer {
+	id: String!
+        email: String!
+	username: String!
+        firstname: String!
+        lastname: String!
+        group: String!
+}
+"""
+salequery to get all or specific customer
+"""
+
+type SaleQuery {
+
+	"""
+	The entire customers in the  system.
+	"""
+	customers: [Customer]
+
+
+	"""
+        get specific customer using their ID
+	"""
+	customer(id: String!): Customer
+
+}
+
+"""
+SalesMutation to query the system to modify its data
+"""
+type SalesMutation {
+	
+        """
+	Delete a customer account.
+	"""
+	deleteCustomer(id: String!): Customer
+	
+        """
+	update customer group to new value
+        """
+	changeGroup(id: String!, newGroup: String!): Customer
+        
+"""
+        create new customer.
+	""" 
+        createCustomer(customer: NewCustomer!): Customer
+
+}
+

@@ -1,0 +1,15 @@
+
+"""
+Query specific customer in the system.
+"""
+query {
+  customer(id: "isnd34"){
+    username
+    firstname
+    lastname
+    email
+    group
+  }
+    
+}
+

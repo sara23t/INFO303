@@ -1,0 +1,14 @@
+
+"""
+Delete Customer from the system.
+"""
+mutation {
+  deleteCustomer(id: "isnd34"){
+    username
+    group
+    firstname
+    lastname
+    email
+  }
+}
+

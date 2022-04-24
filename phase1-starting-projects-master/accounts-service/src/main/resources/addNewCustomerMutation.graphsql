@@ -1,0 +1,24 @@
+
+
+"""
+Add Customer to the system.
+"""
+mutation {
+  createCustomer(
+    customer: {
+      id: "isnd34"
+      firstname: "Sara",
+      lastname: "Taha",
+      email: "st@example.com",
+      group: "black",
+      username: "st342"
+    }
+  ) { 
+      id
+      firstname
+      lastname
+      email
+      group
+      username
+    }
+  }
