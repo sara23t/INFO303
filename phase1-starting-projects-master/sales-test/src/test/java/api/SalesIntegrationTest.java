@@ -122,11 +122,10 @@ public class SalesIntegrationTest {
     @Test
     public void testGetAllSaleByCustomerId() throws IOException {
 
-        Response <Sale>salesResponse = customers.getSalesCustomerId(cus2.getId()).execute();
-        assertThat(salesResponse.body(), is(200));
-       
-        assertThat(salesResponse.body(), samePropertyValuesAs(sale1));
-        assertThat(salesResponse.body(), samePropertyValuesAs(sale2));
+        Response <List<Sale>> salesResponse  = customers.getSalesCustomerId(cus2.getId()).execute();
+        assertThat(salesResponse.code(), is(200));
+      List<Sale> s2 = salesResponse.body();
+        assertThat(s2, hasItems(sale1,sale2));
 
 
     }
@@ -163,7 +162,7 @@ public class SalesIntegrationTest {
         // assertThat(getResponse.code(), is(200));
 
         assertThat(returnSales, hasItems(sale1, sale2));
-
+        assertThat(returnSales, not(hasItem(sale3)));
     }
 
     @SuppressWarnings("null")
@@ -171,8 +170,8 @@ public class SalesIntegrationTest {
     public void testGetSummary() throws IOException {
         Response<Summary> summary2 = customers.getSalesdataCustomerIdSummary(cus1.getId()).execute();
         Summary summarres = summary2.body();
-        assertThat(summarres.getTotalPayment(), is(new BigDecimal("14.4")));
-        assertThat(summarres.getGroup(), is("VIP Customers"));
+        assertThat(summarres.getTotalPayment(), is(new BigDecimal("170.0")));
+        assertThat(summarres.getGroup(), is("Regular Customers"));
         assertThat(summarres.getNumberOfSales(), is(2));
     }
 

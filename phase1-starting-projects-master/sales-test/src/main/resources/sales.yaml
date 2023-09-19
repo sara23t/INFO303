@@ -91,7 +91,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Sale'
+                type: array
+                items:
+                  $ref: '#/components/schemas/Sale'
         '404':
           $ref: '#/components/responses/Not-Found'
       operationId: get-sales-customer-id
