@@ -1,0 +1,15 @@
+
+"""
+Query all customers in the system.
+"""
+query {
+  customers{
+    id
+    username
+    firstname
+    lastname
+    email
+    group
+    
+  }
+}
