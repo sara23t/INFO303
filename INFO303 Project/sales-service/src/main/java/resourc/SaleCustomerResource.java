@@ -35,13 +35,15 @@ public class SaleCustomerResource extends Jooby {
             });
         });
 
-         // define the route for accessing the summary of the customer's sales information
+        // define the route for accessing the summary of the customer's sales information
         path("/api/sales/customer/{id}/summary", () -> {
 
             get("", ctx -> {
-             
-                String id = ctx.path("id").value(); //Extracting the value of the 'id' parameter from the request for further processing.
 
+                String id = ctx.path("id").value(); //Extracting the value of the 'id' parameter from the request for further processing.
+                // if a customer with the given 'id' exists in the database, 
+                // then get the summary of sales information for the specified customer.
+                //otherwise, return a 'NOT_FOUND' status code.
                 if (dao.CustomerExists(id)) {
                     return dao.getSummaryByCustomerId(id);
                 } else {
