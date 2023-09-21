@@ -18,7 +18,7 @@ public class Sale {
 
     private Customer customer; //Holds the reference to a Customer object.
     private Collection<SaleItem> items; //Stores the reference to a collection of SaleItem objects.
-    private Totals totals; //a reference to the Totals object, which holds information about the overall total for the sale
+    private Totals totals;  //a reference to the Totals object, which holds information about the overall total for the sale.
 
     public Sale() {
     }

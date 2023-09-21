@@ -8,50 +8,81 @@ package domain;
  *
  * @author sarataha
  */
+
+/** The Summary class represents information related to sales and its total payment */
 public class Summary {
+
+    private int numberOfSales; //The 'numberOfSales'  stores the count of sales transactions.
+    private double totalPayment; //The totalPayment  stores The total amount of payments.
+    private String group; //Stores the group or category of the sales.
+
     
-    private int numberOfSales;
-    private double totalPayment;
-    private String group;
-
-
-
-public Summary(int numberOfSales, double totalPayment, String group ) {
-this.group = group;
-this.numberOfSales = numberOfSales;
-this.totalPayment = totalPayment;
-}
+    public Summary(int numberOfSales, double totalPayment, String group) {
+        this.group = group;
+        this.numberOfSales = numberOfSales;
+        this.totalPayment = totalPayment;
+    }
 
     public Summary() {
     }
- public String getGroup() {
-        return group;
-    }
-    
+
+    /**
+     * Sets the group for the sale.
+     *
+     * @param group.
+     */
     public void setGroup(String group) {
         this.group = group;
     }
-    
-    public int getnumberOfSales() {
-        return numberOfSales;
-    }
-    
+
+    /**
+     * Sets the number of sales
+     *
+     * @param numberOfSales
+     */
     public void setnumberOfSales(int numberOfSales) {
         this.numberOfSales = numberOfSales;
     }
 
-    public double gettotalPayment() {
-        return totalPayment;
-    }
-    
+    /**
+     * Sets the total payment for the sale.
+     *
+     * @param totalPayment
+     */
     public void settotalPayment(double totalPayment) {
         this.totalPayment = totalPayment;
     }
-  @Override
-    public String toString(){
-        	return  totalPayment + numberOfSales + group;
+
+    /**
+     * Gets the group that is associated with the sale.
+     *
+     * @return the group.
+     */
+    public String getGroup() {
+        return group;
     }
 
-    
+    /**
+     * Gets the number of sales.
+     *
+     * @return The number of sales
+     */
+    public int getnumberOfSales() {
+        return numberOfSales;
+    }
+
+    /**
+     * Gets the total payment of the sale.
+     *
+     * @return The total payment
+     */
+    public double gettotalPayment() {
+        return totalPayment;
+    }
+
+    @Override
+    public String toString() {
+        return totalPayment + numberOfSales + group;
+    }
 
 }
