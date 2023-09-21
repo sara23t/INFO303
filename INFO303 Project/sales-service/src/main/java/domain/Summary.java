@@ -8,21 +8,23 @@ package domain;
  *
  * @author sarataha
  */
-
-/** The Summary class represents information related to sales and its total payment */
+/**
+ * The Summary class represents information related to sales and its total
+ * payment
+ */
 public class Summary {
 
     private int numberOfSales; //The 'numberOfSales'  stores the count of sales transactions.
     private double totalPayment; //The totalPayment  stores The total amount of payments.
     private String group; //Stores the group or category of the sales.
 
-    
     public Summary(int numberOfSales, double totalPayment, String group) {
         this.group = group;
         this.numberOfSales = numberOfSales;
         this.totalPayment = totalPayment;
     }
 
+    // Default constructor for the summary class.
     public Summary() {
     }
 
@@ -80,6 +82,12 @@ public class Summary {
         return totalPayment;
     }
 
+    /**
+     * return a string representation of the summary object, with its
+     * attributes.
+     *
+     * @return formatted summary details.
+     */
     @Override
     public String toString() {
         return totalPayment + numberOfSales + group;

@@ -13,6 +13,7 @@ public final class Totals {
     private double totalTax; // Stores the total tax.
     private double totalPayment; // Stores the total payment.
 
+    //Default constructor for the totals class.
     public Totals() {
     }
 
@@ -70,6 +71,11 @@ public final class Totals {
         return totalPayment;
     }
 
+    /**
+     * return a string representation of the totals object, with its attributes.
+     *
+     * @return formatted totals details.
+     */
     @Override
     public String toString() {
         return "Totals{" + "totalPrice=" + totalPrice + ", totalTax=" + totalTax + ", totalPayment=" + totalPayment + '}';

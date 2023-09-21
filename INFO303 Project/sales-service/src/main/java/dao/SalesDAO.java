@@ -24,11 +24,6 @@ public class SalesDAO {
 
     private static final Multimap<String, Sale> saleByCustomerID = HashMultimap.create();
 
-    public SalesDAO() {
-        if (saleById.isEmpty()) {
-
-        }
-    }
 
     /**
      * Adds a sale to the system by customer.
@@ -117,11 +112,19 @@ public class SalesDAO {
      * @return the summary of sales information.
      */
     public Summary getSummaryByCustomerId(String customerId) {
+
+        //new instance of Summary class , assign it to summary variable
         Summary summary = new Summary();
 
+        // Get a collection of sales linked to a specific customer ID
+        //store them in the salebycustomer variable for further analysis.
+
         Collection<Sale> salebycustomer = getSalesByCustomerid(customerId);
+
         //number of sales is the lenght of the sale for customer
         // total payment is the sum all of the collection
+        
+        
         summary.setnumberOfSales(salebycustomer.size());
         double x = 0;
         for (Sale s : salebycustomer) {

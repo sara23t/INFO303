@@ -2,24 +2,22 @@ package domain;
 
 /**
  *
- * @author sarataha 
- * Sept 2023
+ * @author sarataha Sept 2023
  */
-
 /**
  * The Customer class represents an entity that stores information about
  * customer It includes attributes such as a customer's name, contact details,
  * and other information.
  */
 public class Customer {
-    
-// Unique objects
-    private String id;
-    private String firstName;
-    private String lastName;
-    private String group;
-    private String email;
-    private String customerCode;
+
+// Unique objects identifier
+    private String id; //A field that stores the customer's ID.
+    private String firstName; // field that stores the customer's firstname.
+    private String lastName; // field that stores the customer's lastName
+    private String group; // field that stores the customer's group
+    private String email; // field that stores the customer's email
+    private String customerCode; // field that stores the customer's customerCode
 
     /**
      * Set the id for the customer.
@@ -129,6 +127,12 @@ public class Customer {
         return email;
     }
 
+    /**
+     * return a string representation of the Customer object, with its
+     * attributes.
+     *
+     * @return formatted customer details.
+     */
     @Override
     public String toString() {
         return "Customer{" + "id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", group=" + group + ", email=" + email + ", customerCode=" + customerCode + '}';

@@ -67,6 +67,12 @@ public class SaleItem {
         return productId;
     }
 
+    /**
+     * return a string representation of the SaleItem object, with its
+     * attributes.
+     *
+     * @return formatted SaleItem details.
+     */
     @Override
     public String toString() {
         return "SaleItem{" + "productId=" + productId + ", quantity=" + quantity + ", price=" + price + '}';
