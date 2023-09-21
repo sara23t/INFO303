@@ -5,8 +5,16 @@ import domain.Sale;
 import io.jooby.Jooby;
 import io.jooby.StatusCode;
 
-public class SalesResource extends Jooby {
+/**
+ * 
+ * @author sarataha
+ */
 
+/** The SalesResource class represents the resources for managing sales operations using the jooby framework. */
+
+public class SalesResource extends Jooby { 
+
+    
     public SalesResource(SalesDAO dao) {
 
         path("/api/sales", () -> {

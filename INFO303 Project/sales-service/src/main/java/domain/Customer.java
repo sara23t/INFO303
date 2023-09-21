@@ -9,7 +9,7 @@ package domain;
 /**
  * The Customer class represents an entity that stores information about
  * customer It includes attributes such as a customer's name, contact details,
- * and other relevant information
+ * and other information.
  */
 public class Customer {
     
