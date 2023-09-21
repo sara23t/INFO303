@@ -20,10 +20,11 @@ import java.util.Map;
  */
 public class SalesDAO {
 
+    //declares a static Hashmap saleById for storing Sales by its id
     private static final Map<String, Sale> saleById = new HashMap<>();
 
+    //declares a static Multimap saleByCustomerid that is linked to customer id.
     private static final Multimap<String, Sale> saleByCustomerID = HashMultimap.create();
-
 
     /**
      * Adds a sale to the system by customer.
@@ -118,21 +119,24 @@ public class SalesDAO {
 
         // Get a collection of sales linked to a specific customer ID
         //store them in the salebycustomer variable for further analysis.
-
         Collection<Sale> salebycustomer = getSalesByCustomerid(customerId);
 
-        //number of sales is the lenght of the sale for customer
-        // total payment is the sum all of the collection
-        
-        
+        // set the number of sales in the 'summary' class for the specific customer.
         summary.setnumberOfSales(salebycustomer.size());
+        // Initialize a variable 'x' to track the total payment
         double x = 0;
+
+        //Iterate through each sale in the salebycustomer collection, for a particular customer.
         for (Sale s : salebycustomer) {
 
+            // Store the total payment for the current sale of the customer in variable 'x'.
             x += s.getTotals().getTotalPayment();
 
         }
+        // set the totalpayment to value of x
         summary.settotalPayment(x);
+
+    //Classify customers into two groups based on their total payment.
         if (summary.gettotalPayment() > 5000) {
             summary.setGroup("VIP Customers");
 
@@ -140,6 +144,7 @@ public class SalesDAO {
             summary.setGroup("Regular Customers");
         }
 
+        //return the overall summary sale information for the customer, including the assigned group.
         return summary;
 
     }

@@ -18,7 +18,7 @@ public class SalesResource extends Jooby {
     //The SalesResource constructor class that takes a SalesDAO instance as an argument or parameter.
     public SalesResource(SalesDAO dao) {
 
-        //Defines routes for fetching sales data by ID within the "/api/sales" endpoint
+        //Defines routes for fetching sales data by id within the "/api/sales" endpoint
         //it is responsible for managing sales data operations.
         path("/api/sales", () -> {
             //Handles incoming GET requests with the a specfic 'id' parameter to fetch the data
