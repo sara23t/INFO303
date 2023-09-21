@@ -13,13 +13,14 @@ import java.util.ArrayList;
  */
 public class Sale {
 
-    private String id;
-    private String saleDate;
+    private String id; //A field that stores the sale's ID.
+    private String saleDate; //A field that stores the sale's date.
 
     private Customer customer; //Holds the reference to a Customer object.
     private Collection<SaleItem> items; //Stores the reference to a collection of SaleItem objects.
     private Totals totals;  //a reference to the Totals object, which holds information about the overall total for the sale.
 
+    //Default constructor for the Sale class.
     public Sale() {
     }
 
@@ -111,6 +112,12 @@ public class Sale {
         return customer;
     }
 
+    /**
+     * return a string representation of the sale object, with its
+     * attributes.
+     *
+     * @return formatted sales details.
+     */
     @Override
     public String toString() {
         return "Sale{" + "id=" + id + ", saleDate=" + saleDate + ", customer=" + customer + ", items=" + items + ", totals=" + totals + '}';
