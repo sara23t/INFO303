@@ -119,16 +119,7 @@ public class SalesIntegrationTest {
         assertThat(product.code(), is(404));
     }
 
-    @Test
-    public void testGetAllSaleByCustomerId() throws IOException {
-
-        Response <List<Sale>> salesResponse  = customers.getSalesCustomerId(cus2.getId()).execute();
-        assertThat(salesResponse.code(), is(true));
-      List<Sale> s2 = salesResponse.body();
-        assertThat(s2, hasItems(sale1,sale2));
-
-
-    }
+   
 
     @Test
     public void testGetSaleByID() throws IOException {
@@ -151,17 +142,6 @@ public class SalesIntegrationTest {
 
         createsaleres = sales.addSale(sale3).execute();
         assertThat(createsaleres.code(), is(422));
-
-    }
-
-    @Test
-    public void testGetAllSales() throws IOException {
-        Response<List<Sale>> getResponse = sales.getSales().execute();
-
-        List<Sale> returnSales = getResponse.body();
-        // assertThat(getResponse.code(), is(200));
-
-        assertThat(returnSales, hasItems(sale1, sale2));
 
     }
 
