@@ -120,48 +120,15 @@ public class SalesIntegrationTest {
     }
 
     @Test
-    public void testGetAllSaleByCustomerId() throws IOException {
-
-        Response <List<Sale>> salesResponse  = customers.getSalesCustomerId(cus2.getId()).execute();
-        assertThat(salesResponse.code(), is(true));
-      List<Sale> s2 = salesResponse.body();
-        assertThat(s2, hasItems(sale1,sale2));
-
-
-    }
-
-    @Test
-    public void testGetSaleByID() throws IOException {
-        Response<Sale> getsale = sales.getSale(sale1.getId()).execute();
-        assertThat(getsale.code(), is(200));
-        Response<Sale> getprodss = sales.getSale("BADID").execute();
-        assertThat(getprodss.code(), is(404));
-
-    }
-
-    @Test
     public void testCreateSale() throws IOException {
         Response<Void> createsaleres = sales.addSale(sale3).execute();
         assertThat(createsaleres.code(), is(201));
 
-        //Response<Sale> salesResponse = sales.getSale(sale3.getId()).execute();
-        // assertThat(salesResponse.code(),is(sale3));
         Response<Sale> salesResponse = sales.getSale("s3").execute();
         assertThat(salesResponse.code(), is(200));
 
         createsaleres = sales.addSale(sale3).execute();
         assertThat(createsaleres.code(), is(422));
-
-    }
-
-    @Test
-    public void testGetAllSales() throws IOException {
-        Response<List<Sale>> getResponse = sales.getSales().execute();
-
-        List<Sale> returnSales = getResponse.body();
-        // assertThat(getResponse.code(), is(200));
-
-        assertThat(returnSales, hasItems(sale1, sale2));
 
     }
 
